@@ -9,6 +9,7 @@ export default function React16() {
   const react17Url = hostMap("//localhost:7100/");
   const vue2Url = hostMap("//localhost:7200/");
   const vue3Url = hostMap("//localhost:7300/");
+  const vue3DemoUrl = hostMap("//localhost:7800/");
   const vite = hostMap("//localhost:7500/");
   const angular12Url = hostMap("//localhost:7400/");
   const degrade = window.Proxy
@@ -57,6 +58,17 @@ export default function React16() {
           width="100%"
           name="vue3"
           url={vue3Url}
+          sync={true}
+          props={props}
+          alive={true}
+        ></WujieReact>
+      </div>}
+      {degrade && <div className="all-item">
+        <WujieReact
+          height="100%"
+          width="100%"
+          name="vue3Demo"
+          url={vue3DemoUrl}
           sync={true}
           props={props}
           alive={true}

@@ -4,6 +4,7 @@
     <WujieVue class="item" name="react17" :url="react17Url" :sync="true"></WujieVue>
     <WujieVue class="item" name="vue2" :url="vue2Url" :sync="true"></WujieVue>
     <WujieVue class="item" name="vue3" :url="vue3Url" :sync="true"></WujieVue>
+    <WujieVue class="item" name="vue3" :url="vue3DemoUrl" :sync="true"></WujieVue>
     <WujieVue class="item" name="vite" :url="vite" :sync="true"></WujieVue>
     <WujieVue class="item" name="angular12" :url="angular12Url" :sync="true"></WujieVue>
   </div>
@@ -19,6 +20,7 @@ export default {
       react17Url: hostMap("//localhost:7100/"),
       vue2Url: hostMap("//localhost:7200/"),
       vue3Url: hostMap("//localhost:7300/"),
+      vue3DemoUrl: hostMap("//localhost:7800/"),
       vite: hostMap("//localhost:7500/"),
       angular12Url: hostMap("//localhost:7400/"),
     };

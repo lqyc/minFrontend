@@ -58,6 +58,13 @@ module.exports = {
       port: 7700,
     },
     {
+      command: LERNA_EXEC + " run start --scope vue3Demo",
+      usedPortAction: "kill",
+      launchTimeout: 60000,
+      host: "0.0.0.0",
+      port: 7800,
+    },
+    {
       command: LERNA_EXEC + " run start --scope main-vue",
       usedPortAction: "kill",
       launchTimeout: 60000,

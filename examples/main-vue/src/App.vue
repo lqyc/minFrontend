@@ -30,7 +30,7 @@
       </div>
       <!-- vue2相关路由 -->
       <router-link to="/vue2">
-        vue2
+        vue-2
         <a-icon :class="['main-icon', { active: vue2Flag }]" type="caret-up" @click.native="handleFlag('vue2')" />
       </router-link>
       <div class="sub-menu" v-show="vue2Flag">
@@ -51,6 +51,22 @@
         <router-link to="/vue3-sub/location">location</router-link>
         <router-link to="/vue3-sub/contact">contact</router-link>
         <router-link to="/vue3-sub/state">state</router-link>
+      </div>
+      <router-link v-if="degrade" to="/vue3Demo">
+        vue3Demo
+        <span class="alive">保活</span>
+        <a-icon
+          :class="['main-icon', { active: vue3DemoFlag }]"
+          type="caret-up"
+          @click.native="handleFlag('vue3Demo')"
+        />
+      </router-link>
+      <div class="sub-menu" v-show="vue3DemoFlag">
+        <router-link to="/vue3Demo-sub/home">home</router-link>
+        <router-link to="/vue3Demo-sub/dialog">dialog</router-link>
+        <router-link to="/vue3Demo-sub/location">location</router-link>
+        <router-link to="/vue3Demo-sub/contact">contact</router-link>
+        <router-link to="/vue3Demo-sub/state">state</router-link>
       </div>
       <router-link v-if="degrade" to="/vite"
         >vite <a-icon :class="['main-icon', { active: viteFlag }]" type="caret-up" @click.native="handleFlag('vite')"
@@ -81,6 +97,7 @@ export default {
       react17Flag: this.$route.name === "react17-sub",
       vue2Flag: this.$route.name === "vue2-sub",
       vue3Flag: this.$route.name === "vue3-sub",
+      vue3DemoFlag: this.$route.name === "vue3Demo-sub",
       viteFlag: this.$route.name === "vite-sub",
       degrade: window.Proxy,
     };

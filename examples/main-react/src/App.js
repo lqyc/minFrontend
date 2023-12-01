@@ -6,6 +6,7 @@ import React16 from "./pages/React16";
 import React17 from "./pages/React17";
 import Vue2 from "./pages/Vue2";
 import Vue3 from "./pages/Vue3";
+import Vue3Demo from "./pages/Vue3Demo";
 import Vite from "./pages/Vite";
 import Angular12 from "./pages/Angular12";
 import All from "./pages/All";
@@ -19,6 +20,7 @@ const subMap = {
   react17: ["home", "dialog", "location", "communication", "state"],
   vue2: ["home", "dialog", "location", "communication"],
   vue3: ["home", "dialog", "location", "contact", "state"],
+  vue3Demo: ["home", "dialog", "location", "contact", "state"],
   vite: ["home", "dialog", "location", "contact"],
 };
 
@@ -29,6 +31,7 @@ function Nav() {
   const [react17Flag, setReact17Flag] = useState(location.pathname.includes("react7-sub"));
   const [vue2Flag, setVue2Flag] = useState(location.pathname.includes("vue2-sub"));
   const [vue3Flag, setVue3Flag] = useState(location.pathname.includes("vue3-sub"));
+  const [vue3DemoFlag, setVue3DemoFlag] = useState(location.pathname.includes("vue3Demo-sub"));
   const [viteFlag, setViteFlag] = useState(location.pathname.includes("vite-sub"));
   const degrade = window.Proxy
 
@@ -57,6 +60,9 @@ function Nav() {
       case "vue3":
         setVue3Flag(!vue3Flag);
         break;
+      case "vue3Demo":
+        setVue3DemoFlag(!vue3DemoFlag);
+        break;
       case "vite":
         setViteFlag(!viteFlag);
         break;
@@ -67,7 +73,7 @@ function Nav() {
   return (
     <nav>
       <NavLink to="/home" className={({ isActive }) => (isActive ? "active" : "inactive")}>
-        介绍
+        介绍0
       </NavLink>
       <NavLink to="/react16" className={({ isActive }) => (isActive ? "active" : "inactive")}>
         react16
@@ -119,6 +125,17 @@ function Nav() {
           </NavLink>
         ))}
       </div>
+      {degrade && <NavLink to="/vue3Demo" className={({ isActive }) => (isActive ? "active" : "inactive")}>
+      vue3Demo<span className="alive">保活</span>
+        <CaretUpOutlined className={vue3DemoFlag ? "main-icon active" : "main-icon"} onClick={() => handleFlag("vue3Demo")} />
+      </NavLink>}
+      <div className="sub-menu" style={{display: vue3DemoFlag ? "block" : "none"}}>
+        {subMap.vue3Demo.map((item) => (
+          <NavLink to={`/vue3Demo-sub/${item}`} key={item} className={({ isActive }) => (isActive ? "active" : "inactive")}>
+            {item}
+          </NavLink>
+        ))}
+      </div>
        {degrade && <NavLink to="/vite" className={({ isActive }) => (isActive ? "active" : "inactive")}>
         vite
         <CaretUpOutlined className={viteFlag ? "main-icon active" : "main-icon"} onClick={() => handleFlag("vite")} />
@@ -166,6 +183,8 @@ class App extends React.PureComponent {
               <Route exact path="/vue2-sub/:path" element={<Vue2 />} />
               <Route exact path="/vue3" element={<Vue3 />} />
               <Route exact path="/vue3-sub/:path" element={<Vue3 />} />
+              <Route exact path="/vue3Demo" element={<Vue3Demo />} />
+              <Route exact path="/vue3Demo-sub/:path" element={<Vue3Demo />} />
               <Route exact path="/vite" element={<Vite />} />
               <Route exact path="/vite-sub/:path" element={<Vite />} />
               <Route exact path="/angular12" element={<Angular12 />} />

@@ -97,6 +97,20 @@ setupApp({
   ...lifecycles,
 });
 
+setupApp({
+  name: "vue3Demo",
+  url: hostMap("//localhost:7800/"),
+  attrs,
+  exec: true,
+  alive: true,
+  plugins: [{ cssExcludes: ["https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"] }],
+  // 引入了的第三方样式不需要添加credentials
+  fetch: (url, options) =>
+    url.includes(hostMap("//localhost:7800/")) ? credentialsFetch(url, options) : window.fetch(url, options),
+  degrade,
+  ...lifecycles,
+});
+
 if (window.localStorage.getItem("preload") !== "false") {
   preloadApp({
     name: "react16",
@@ -113,6 +127,9 @@ if (window.localStorage.getItem("preload") !== "false") {
   if (window.Proxy) {
     preloadApp({
       name: "vue3",
+    });
+    preloadApp({
+      name: "vue3Demo",
     });
     preloadApp({
       name: "vite",
